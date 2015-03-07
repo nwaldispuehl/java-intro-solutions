@@ -1,4 +1,4 @@
-package solution_06;
+package tools;
 
 import java.util.List;
 

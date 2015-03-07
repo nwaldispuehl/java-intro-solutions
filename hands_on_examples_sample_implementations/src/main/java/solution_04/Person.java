@@ -1,4 +1,4 @@
-package solution_02;
+package solution_04;
 
 public class Person {
 

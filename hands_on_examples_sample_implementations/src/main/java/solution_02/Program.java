@@ -7,7 +7,7 @@ public class Program {
 		Person paul = new Person("Paul", 1992);
 		
 		// This statement should print:
-		// 'Paul is older than Ronald'.
+		// 'Ronald is younger than Paul'.
 		System.out.println(ronald.compareAgeWith(paul));
 	}
 }

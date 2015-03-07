@@ -1,4 +1,4 @@
-package solution_05;
+package solution_03;
 
 import java.awt.Color;
 import java.awt.Graphics;
