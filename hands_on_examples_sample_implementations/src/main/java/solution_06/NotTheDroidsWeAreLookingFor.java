@@ -1,15 +1,15 @@
-package solution_07;
+package solution_06;
 
-import solution_07.alliance.Protagonist;
-import solution_07.alliance.Robot;
-import solution_07.empire.Antagonist;
-import solution_07.empire.GalacticEmpireMember;
-import solution_07.empire.Soldier;
-import solution_07.gameboard.GameBoard;
-import solution_07.gameboard.GameBoardElement;
-import solution_07.gameboard.Position;
-import solution_07.gameboard.Rock;
-import solution_07.positionfindstrategies.UserInput;
+import solution_06.alliance.Protagonist;
+import solution_06.alliance.Robot;
+import solution_06.empire.Antagonist;
+import solution_06.empire.GalacticEmpireMember;
+import solution_06.empire.Soldier;
+import solution_06.gameboard.GameBoard;
+import solution_06.gameboard.GameBoardElement;
+import solution_06.gameboard.Position;
+import solution_06.gameboard.Rock;
+import solution_06.positionfindstrategies.UserInput;
 
 public class NotTheDroidsWeAreLookingFor extends GameBase {
 

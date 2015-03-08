@@ -22,14 +22,15 @@ public class WordLengthFrequencyCounter {
 	
 	public void calculateFrequencyTableFrom(List<String> wordList) {
 		for (String word : wordList) {
+			Integer wordLength = word.length();
 			
-			if (frequencyTable.containsKey(word.length())) {
+			if (frequencyTable.containsKey(wordLength)) {
 				
-				Integer value = frequencyTable.get(word.length());
-				frequencyTable.put(word.length(), value + 1);
+				Integer value = frequencyTable.get(wordLength);
+				frequencyTable.put(wordLength, value + 1);
 			}
 			else {
-				frequencyTable.put(word.length(), 1);
+				frequencyTable.put(wordLength, 1);
 			}
 			
 		}

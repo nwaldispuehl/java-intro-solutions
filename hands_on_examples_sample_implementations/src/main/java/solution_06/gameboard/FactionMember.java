@@ -1,4 +1,4 @@
-package solution_07.gameboard;
+package solution_06.gameboard;
 
 /**
  * Faction members belong to a faction, and are able to fight with each other.

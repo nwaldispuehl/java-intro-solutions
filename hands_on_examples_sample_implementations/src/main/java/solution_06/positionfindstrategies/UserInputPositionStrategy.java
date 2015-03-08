@@ -1,10 +1,10 @@
-package solution_07.positionfindstrategies;
+package solution_06.positionfindstrategies;
 
 import java.util.Collection;
 
-import solution_07.gameboard.FindNextPositionStrategy;
-import solution_07.gameboard.GameBoardElement;
-import solution_07.gameboard.Position;
+import solution_06.gameboard.FindNextPositionStrategy;
+import solution_06.gameboard.GameBoardElement;
+import solution_06.gameboard.Position;
 
 public class UserInputPositionStrategy implements FindNextPositionStrategy {
 

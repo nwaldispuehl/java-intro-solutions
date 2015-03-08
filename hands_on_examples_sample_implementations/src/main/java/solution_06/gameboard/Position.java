@@ -1,4 +1,4 @@
-package solution_07.gameboard;
+package solution_06.gameboard;
 
 /**
  * Holds a cartesian position information.

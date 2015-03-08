@@ -1,4 +1,4 @@
-package solution_07.utils;
+package solution_06.utils;
 
 import java.awt.Image;
 import java.io.IOException;

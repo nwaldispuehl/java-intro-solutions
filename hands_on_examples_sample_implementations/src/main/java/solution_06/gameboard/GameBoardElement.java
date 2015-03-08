@@ -1,4 +1,4 @@
-package solution_07.gameboard;
+package solution_06.gameboard;
 
 import java.awt.*;
 import java.util.Collection;
