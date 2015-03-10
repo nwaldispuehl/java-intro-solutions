@@ -1,10 +1,10 @@
-package solution_07;
+package solution_08;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.Random;
 
-import solution_07.WebServer.RequestHandler;
+import solution_08.WebServer.RequestHandler;
 
 public class HelloWorldWebserver {
 
