@@ -2,6 +2,7 @@ package solution_07;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.net.URL;
 
 import org.json.JSONObject;
@@ -9,7 +10,7 @@ import org.json.JSONObject;
 public class OpenWeatherMapWeatherInformation implements WeatherInformation {
 	
 	private static final String API_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
-	private static final double KELVIN_TRIPLE_POINT = 273.15;
+	private static final BigDecimal KELVIN_TRIPLE_POINT = BigDecimal.valueOf(273.15);
 
 	@Override
 	public double getTemperatureFor(String city) {
@@ -18,9 +19,9 @@ public class OpenWeatherMapWeatherInformation implements WeatherInformation {
 		
 		JSONObject weather = new JSONObject(rawData);
 		JSONObject main = (JSONObject) weather.get("main");
-		Double temperatureKelvin = main.getDouble("temp");
+		BigDecimal temperatureKelvin = BigDecimal.valueOf(main.getDouble("temp"));
 		
-		return temperatureKelvin - KELVIN_TRIPLE_POINT;
+		return temperatureKelvin.subtract(KELVIN_TRIPLE_POINT).doubleValue();
 	}
 	
 
