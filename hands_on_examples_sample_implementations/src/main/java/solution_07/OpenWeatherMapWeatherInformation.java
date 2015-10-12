@@ -9,7 +9,9 @@ import org.json.JSONObject;
 
 public class OpenWeatherMapWeatherInformation implements WeatherInformation {
 	
-	private static final String API_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
+	/* Note that this is just a generated API key for the free subscription in the URL. It might or might not work. 
+	 * If the latter happens you could go the their web site to register for an own API key. */
+	private static final String API_URL = "http://api.openweathermap.org/data/2.5/weather?appid=cf3772c618c3b3309a15427de0c799f2&q=";
 	private static final BigDecimal KELVIN_TRIPLE_POINT = BigDecimal.valueOf(273.15);
 
 	@Override
