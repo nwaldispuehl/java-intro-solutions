@@ -4,10 +4,16 @@ public class Program {
 	public static void main(String[] args) {
 		
 		Person ronald = new Person("Ronald", 1995);
-		Person paul = new Person("Paul", 1992);
+		int ronaldsAge = ronald.getAgeIn(2016);
+		System.out.println("Age: " + ronaldsAge);
 		
-		// This statement should print:
-		// 'Ronald is younger than Paul'.
-		System.out.println(ronald.compareAgeWith(paul));
+		
+		// 'Uncomment' the following code,  i.e. remove the 
+		// comment slashes ('//') in front of the lines.
+		// Then, add the new method to the 'Person' class
+		// to make the error go away.
+		
+		String ronaldsName = ronald.getName();
+		System.out.println("Name: " + ronaldsName);
 	}
 }

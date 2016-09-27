@@ -1,32 +1,19 @@
 package solution_05;
 
-import java.util.List;
-
-import tools.FileWordListAcquirer;
 
 public class Program {
-
-	private static List<String> commonWordList = new FileWordListAcquirer().getWordListFrom("1000_most_common_words.txt");
-	
 	public static void main(String[] args) {
 		
-		// This prints every word of the wordlist
-		System.out.println("Word list:");
-		for (String word : commonWordList) {
-			System.out.println(word + " " + word.length());
-		} 
+		FinalExam finalExam = new FinalExam();
+		finalExam.applyForFinalExam(new Student("678901", "Rosie", 1989));
+		finalExam.applyForFinalExam(new Student("123456", "Paula", 1990));
+		finalExam.applyForFinalExam(new Student("234567", "Walter", 1991));
+		finalExam.applyForFinalExam(new Student("345678", "Brenda", 1992));
+		finalExam.applyForFinalExam(new Student("456789", "Chuck", 1993));
+		finalExam.applyForFinalExam(new Student("567890", "Dan", 1994));
 		
-		// Now we want to know the word length frequency.
-		// Implement the method calculateFrequencyTableFrom so that for every word length the number of words of this length is stored, e.g.:
-		// 1 letter: 2 words
-		// 2 letters: 12 words
-		// 3 letters: 140 words
-		// etc.
-		System.out.println("Frequency table:");
-		WordLengthFrequencyCounter frequencyCounter = new WordLengthFrequencyCounter();
-		frequencyCounter.calculateFrequencyTableFrom(commonWordList);
-		frequencyCounter.printFrequencyTable();
-	
-		
+		// The following statements should print a line for every student which is eligible for the final exam like this:
+		// Accepted student: Rosie (678901)
+		finalExam.printAcceptedApplicants();
 	}
 }
