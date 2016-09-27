@@ -10,7 +10,7 @@ import solution_07.utils.ImageLoader;
 
 public class Antagonist extends GalacticEmpireMember {
 
-	private static Image icon = new ImageLoader().loadIcon("antagonist.png");
+	private static Image icon = new ImageLoader().loadIcon("not_the_droids/antagonist.png");
 	
 	private static final int INITIAL_POWER = 12;
 

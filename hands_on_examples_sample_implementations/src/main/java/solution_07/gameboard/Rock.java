@@ -7,7 +7,7 @@ import solution_07.utils.ImageLoader;
 
 public class Rock extends AbstractGameBoardElement {
 
-	private static Image icon = new ImageLoader().loadIcon("rock.png");
+	private static Image icon = new ImageLoader().loadIcon("not_the_droids/rock.png");
 	
 	public Rock(Position position) {
 		super(position);

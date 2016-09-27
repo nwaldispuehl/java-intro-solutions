@@ -225,10 +225,10 @@ public abstract class GameBase extends JApplet {
   private java.util.List<Image> randomTiles = new ArrayList<Image>();
   private ImageLoader loader = new ImageLoader();
   // Tiles from here: http://opengameart.org/content/lpc-tile-atlas
-  private Image tile1 = loader.loadIcon("tile1.png");
-  private Image tile2 = loader.loadIcon("tile2.png");
-  private Image tile3 = loader.loadIcon("tile3.png");
-  private Image shadow = loader.loadIcon("shadow.png");
+  private Image tile1 = loader.loadIcon("not_the_droids/tile1.png");
+  private Image tile2 = loader.loadIcon("not_the_droids/tile2.png");
+  private Image tile3 = loader.loadIcon("not_the_droids/tile3.png");
+  private Image shadow = loader.loadIcon("not_the_droids/shadow.png");
 
   /**
    * Draws the provided text in the middle of the screen. 
