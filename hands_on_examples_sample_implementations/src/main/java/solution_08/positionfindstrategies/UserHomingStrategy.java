@@ -1,11 +1,11 @@
-package solution_07.positionfindstrategies;
+package solution_08.positionfindstrategies;
 
 import java.util.Collection;
 
-import solution_07.alliance.Protagonist;
-import solution_07.gameboard.FindNextPositionStrategy;
-import solution_07.gameboard.GameBoardElement;
-import solution_07.gameboard.Position;
+import solution_08.alliance.Protagonist;
+import solution_08.gameboard.FindNextPositionStrategy;
+import solution_08.gameboard.GameBoardElement;
+import solution_08.gameboard.Position;
 
 /**
  * A strategy which looks for a Protagonist game board element and homes for it. If there is none, the current position is returned.

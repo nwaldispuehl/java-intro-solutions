@@ -1,7 +1,7 @@
-package solution_07.empire;
+package solution_08.empire;
 
-import solution_07.gameboard.AbstractFactionMember;
-import solution_07.gameboard.Position;
+import solution_08.gameboard.AbstractFactionMember;
+import solution_08.gameboard.Position;
 
 public abstract class GalacticEmpireMember extends AbstractFactionMember {
 

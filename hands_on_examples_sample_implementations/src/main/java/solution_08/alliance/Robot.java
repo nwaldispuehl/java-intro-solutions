@@ -1,12 +1,12 @@
-package solution_07.alliance;
+package solution_08.alliance;
 
 import java.awt.Image;
 import java.util.Collection;
 
-import solution_07.gameboard.GameBoardElement;
-import solution_07.gameboard.Position;
-import solution_07.positionfindstrategies.RandomNextPositionStrategy;
-import solution_07.utils.ImageLoader;
+import solution_08.gameboard.GameBoardElement;
+import solution_08.gameboard.Position;
+import solution_08.positionfindstrategies.RandomNextPositionStrategy;
+import solution_08.utils.ImageLoader;
 
 /**
  * The friendly helpers of the protagonist.

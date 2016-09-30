@@ -1,4 +1,4 @@
-package solution_08;
+package solution_07;
 
 public interface WeatherInformation {
 

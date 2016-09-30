@@ -1,9 +1,9 @@
-package solution_07.gameboard;
+package solution_08.gameboard;
 
 import java.awt.Image;
 import java.util.Collection;
 
-import solution_07.utils.ImageLoader;
+import solution_08.utils.ImageLoader;
 
 public class Rock extends AbstractGameBoardElement {
 

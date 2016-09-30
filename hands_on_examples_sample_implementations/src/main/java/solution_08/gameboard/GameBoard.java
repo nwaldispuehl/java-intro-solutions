@@ -1,8 +1,8 @@
-package solution_07.gameboard;
+package solution_08.gameboard;
 
 import java.util.*;
 
-import solution_07.positionfindstrategies.UserInput;
+import solution_08.positionfindstrategies.UserInput;
 
 /**
  * The game board holds information about all game board elements.

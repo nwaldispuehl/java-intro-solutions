@@ -1,4 +1,4 @@
-package solution_07;
+package solution_08;
 
 import static java.awt.event.KeyEvent.VK_DOWN;
 import static java.awt.event.KeyEvent.VK_KP_DOWN;
@@ -8,10 +8,10 @@ import static java.awt.event.KeyEvent.VK_KP_UP;
 import static java.awt.event.KeyEvent.VK_LEFT;
 import static java.awt.event.KeyEvent.VK_RIGHT;
 import static java.awt.event.KeyEvent.VK_UP;
-import static solution_07.positionfindstrategies.UserInput.DOWN;
-import static solution_07.positionfindstrategies.UserInput.LEFT;
-import static solution_07.positionfindstrategies.UserInput.RIGHT;
-import static solution_07.positionfindstrategies.UserInput.UP;
+import static solution_08.positionfindstrategies.UserInput.DOWN;
+import static solution_08.positionfindstrategies.UserInput.LEFT;
+import static solution_08.positionfindstrategies.UserInput.RIGHT;
+import static solution_08.positionfindstrategies.UserInput.UP;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -28,12 +28,12 @@ import java.util.Random;
 import javax.swing.JApplet;
 import javax.swing.JPanel;
 
-import solution_07.gameboard.FactionMember;
-import solution_07.gameboard.GameBoard;
-import solution_07.gameboard.GameBoardElement;
-import solution_07.gameboard.Position;
-import solution_07.positionfindstrategies.UserInput;
-import solution_07.utils.ImageLoader;
+import solution_08.gameboard.FactionMember;
+import solution_08.gameboard.GameBoard;
+import solution_08.gameboard.GameBoardElement;
+import solution_08.gameboard.Position;
+import solution_08.positionfindstrategies.UserInput;
+import solution_08.utils.ImageLoader;
 
 /**
  * Abstract base class for NotTheDroidsWeAreLookingFor which does all the heavy work.

@@ -1,9 +1,11 @@
-package solution_08;
+package solution_07;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import org.json.JSONObject;
 
@@ -17,7 +19,8 @@ public class OpenWeatherMapWeatherInformation implements WeatherInformation {
 	@Override
 	public double getTemperatureFor(String city) {
 		
-		String rawData = getDataFrom(API_URL + city);
+		String rawData = getDataFrom(API_URL + encode(city));
+//		System.out.println("Fetched data: " + rawData);
 		
 		JSONObject weather = new JSONObject(rawData);
 		JSONObject main = (JSONObject) weather.get("main");
@@ -29,11 +32,19 @@ public class OpenWeatherMapWeatherInformation implements WeatherInformation {
 
 	@Override
 	public int getHumidityFor(String city) {
-		String rawData = getDataFrom(API_URL + city);
+		String rawData = getDataFrom(API_URL + encode(city));
 		JSONObject weather = new JSONObject(rawData);
 		JSONObject main = (JSONObject) weather.get("main");
 		int humidity = main.getInt("humidity");
 		return humidity;
+	}
+	
+	private String encode(String s) {
+		try {
+			return URLEncoder.encode(s, "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	

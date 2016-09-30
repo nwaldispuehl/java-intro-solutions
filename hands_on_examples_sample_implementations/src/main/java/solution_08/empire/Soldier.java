@@ -1,12 +1,12 @@
-package solution_07.empire;
+package solution_08.empire;
 
 import java.awt.Image;
 import java.util.Collection;
 
-import solution_07.gameboard.GameBoardElement;
-import solution_07.gameboard.Position;
-import solution_07.positionfindstrategies.UserHomingStrategy;
-import solution_07.utils.ImageLoader;
+import solution_08.gameboard.GameBoardElement;
+import solution_08.gameboard.Position;
+import solution_08.positionfindstrategies.UserHomingStrategy;
+import solution_08.utils.ImageLoader;
 
 public class Soldier extends GalacticEmpireMember {
 

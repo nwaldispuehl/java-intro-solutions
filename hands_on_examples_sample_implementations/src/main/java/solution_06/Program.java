@@ -22,6 +22,7 @@ public class Program {
 		// 2 letters: 12 words
 		// 3 letters: 140 words
 		// etc.
+		System.out.println("---");
 		System.out.println("Frequency table:");
 		WordLengthFrequencyCounter frequencyCounter = new WordLengthFrequencyCounter();
 		frequencyCounter.calculateFrequencyTableFrom(commonWordList);
