@@ -31,15 +31,17 @@ class Avatar extends AbstractAvatar {
 			moveForwards();
 		}
 		
-		for (int i = 0; i < 3; i++) {
-			turnLeft();
-			moveForwards();
-			turnRight();
-			moveForwards();
-		}
+		turnLeft();
+		moveForwards();
 		
 		turnRight();
-		turnRight();
+		moveForwards();
+		
+		turnLeft();
+		moveForwards();
+		moveForwards();
+
+		turnLeft();
 		moveForwards();
 	}
 	
