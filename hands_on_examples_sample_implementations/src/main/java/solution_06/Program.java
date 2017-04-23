@@ -13,7 +13,7 @@ public class Program {
 		// This prints every word of the wordlist
 		System.out.println("Word list:");
 		for (String word : commonWordList) {
-			System.out.println(word + " " + word.length());
+			System.out.println(word + " (Length: " + word.length() + ")");
 		} 
 		
 		// Now we want to know the word length frequency.
