@@ -1,73 +1,67 @@
 package solution_01;
 
-import javafx.application.Application;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
-abstract class AbstractTreasureHunt extends Application {
+import javax.swing.JApplet;
+import javax.swing.JPanel;
+
+
+abstract class AbstractTreasureHunt extends JApplet {
 
 	//---- Fields
-	
+
+	static final long serialVersionUID = 1L;
+
 	static final int WIDTH = 7;
 	static final int HEIGHT = 7;
-	
+
+	private JPanel background;
+
 	GameBoard gameBoard = new GameBoard(this, WIDTH, HEIGHT);
-	
+
 	BoardItem placeholder = new BoardItem(gameBoard, "planetCute/placeholder.png");
 	BoardItem grass = new BoardItem(gameBoard, "planetCute/grass_block.png");
 	BoardItem dirt = new BoardItem(gameBoard, "planetCute/dirt_block.png");
 	BoardItem stone = new BoardItem(gameBoard, "planetCute/stone_block.png");
 	Rock rock = new Rock(gameBoard);
 	Gem gem = new Gem(gameBoard);
-	
+
 	Avatar avatar = new Avatar(gameBoard);
 
-	GridPane foreground;
-	BorderPane overlay;
-	
-	
 	//---- Methods
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-		
-		primaryStage.setOnCloseRequest((event) -> System.exit(0));
-		
-		StackPane stackPane = new StackPane();
-		
-		GridPane underground = createGridPane();
-		initializeUndergroundIn(underground);
-		stackPane.getChildren().add(underground);
-		
-		GridPane ground = createGridPane();
-		ground.setTranslateY(-41);
-		initializeBackgroundIn(ground);
-		stackPane.getChildren().add(ground);
-		
-		foreground = createGridPane();
-		foreground.setTranslateY(-82);
-		stackPane.getChildren().add(foreground);
-		
-		overlay = new BorderPane();
-		stackPane.getChildren().add(overlay);
-		
-		Scene scene = new Scene(stackPane, 840, 840);
-		primaryStage.setTitle("Treasure Hunt");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        
-        placeGameBoardItems();
-        
-        startMovement();
+	public void init() {
+		super.init();
+
+		background = new JPanel() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void paint(Graphics g) {
+				super.paint(g);
+				Graphics2D g2 = (Graphics2D) g;
+				paintUndergroundIn(g2);
+				paintBackgroundIn(g2);
+				paintForegroundIn(g2);
+			}
+		};
+
+		add(background);
+		setSize(840, 840);
+
+		Frame window = (Frame) this.getParent().getParent();
+		window.setMenuBar(null);
+		window.setTitle("Treasure Hunt");
+
+		placeGameBoardItems();
+		startMovement();
 	}
 
 	void placeGameBoardItems() {
@@ -80,83 +74,98 @@ abstract class AbstractTreasureHunt extends Application {
 		add(rock, 2, 0);
 		add(rock, 4, 5);
 		add(rock, 6, 4);
-		
+
 		// Game goal
 		add(gem, 5, 1);
-		
+
 		// Avatar
 		gameBoard.setAvatarAt(avatar, 1, 6);
-		
+
 		redraw();
 	}
-	
+
 	void add(BoardItem boardItem, int x, int y) {
 		gameBoard.addAt(boardItem, x, y);
 	}
-	
+
 	void startMovement() {
 		gameBoard.startMovement();
 	}
-	
+
 	public void redraw() {
-		paintForegroundIn(foreground);
+		repaint();
 		if (gameBoard.isGameOver()) {
-			printToOverlay(gameBoard.getGameOverMessage());
+			drawText(gameBoard.getGameOverMessage());
 		}
 	}
 
-	private void printToOverlay(String gameOverMessage) {
-		Text gameOverBanner = new Text(gameOverMessage);
-		gameOverBanner.setFont(Font.font("Arial", FontWeight.BLACK, 100));
-		gameOverBanner.setFill(Paint.valueOf("white"));
-		overlay.setCenter(gameOverBanner);
+	/**
+	 * Draws the provided text in the middle of the screen. 
+	 */
+	private void drawText(String text) {
+		Graphics2D graphics2d = (Graphics2D) getGraphics();
+		Font font = new Font(Font.SANS_SERIF, Font.BOLD | Font.TRUETYPE_FONT, 64);
+
+		graphics2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		graphics2d.setFont(font);
+		FontMetrics fontMetrics = graphics2d.getFontMetrics();
+		int messageHeight = fontMetrics.getHeight();
+		int messageWidth = fontMetrics.stringWidth(text);
+
+		graphics2d.drawString(text, (getWidth() - messageWidth) / 2, (getHeight() - messageHeight) / 2);
+		graphics2d.setColor(Color.WHITE);
+		graphics2d.drawString(text, 3 + (getWidth() - messageWidth) / 2, 3 + (getHeight() - messageHeight) / 2);
 	}
 
-	GridPane createGridPane() {
-		GridPane gridpane = new GridPane();
-		gridpane.setAlignment(Pos.CENTER);
-		gridpane.setVgap(-86);
-		gridpane.setHgap(0);		
-		return gridpane;
-	}
-	
-	void initializeUndergroundIn(GridPane underground) {
-		// We pave the background with grass
+	void paintUndergroundIn(Graphics2D g2) {
+		// We fill the underground with dirt
 		for (int i = 0; i < WIDTH; i++) {
 			for (int j = 0; j < HEIGHT; j++) {
-				underground.add(new ImageView(dirt.getSprite()), j, i);
+				paintIn(g2, dirt, j, i, 0, 82);
 			}
 		}	
 	}
 
-	void initializeBackgroundIn(GridPane background) {
+	void paintBackgroundIn(Graphics2D g2) {
 		// We pave the background with grass
 		for (int i = 0; i < WIDTH; i++) {
 			for (int j = 0; j < HEIGHT; j++) {
-				background.add(new ImageView(grass.getSprite()), j, i);
+				paintIn(g2, grass, j, i,  0, 41);
 			}
 		}	
 		// Add a little paved way at the bottom:
-		background.add(new ImageView(stone.getSprite()), 1, 5);
-		background.add(new ImageView(stone.getSprite()), 1, 6);
+		paintIn(g2, stone, 1, 5,  0, 41);
+		paintIn(g2, stone, 1, 6,  0, 41);
 	}
-	
-	void paintForegroundIn(GridPane gridPane) {
-		gridPane.getChildren().clear();
-		
+
+	void paintForegroundIn(Graphics2D g2) {	
 		for (int i = 0; i < WIDTH; i++) {
 			for (int j = 0; j < HEIGHT; j++) {
-				gridPane.add(new ImageView(placeholder.getSprite()), j, i);
+				paintIn(g2, placeholder, j, i);
 			}
 		}
 		for (int i = 0; i < WIDTH; i++) {
 			for (int j = 0; j < HEIGHT; j++) {
 				BoardItem boardItem = gameBoard.getItemFor(j, i);
 				if (boardItem != null) {
-					gridPane.add(new ImageView(boardItem.getSprite()), j, i);
+					paintIn(g2, boardItem, j, i);
 				}
 			}
 		}	
 	}
- 
+
+	void paintIn(Graphics2D g2, BoardItem boardItem, int x, int y) {
+		paintIn(g2, boardItem, x, y, 0, 0);
+	}
+
+	void paintIn(Graphics2D g2, BoardItem boardItem, int x, int y, int xOffset, int yOffset) {
+		int spriteWidth = boardItem.getSprite().getWidth(null);
+		int spriteHeight = boardItem.getSprite().getHeight(null) - 86;
+		
+		// We do a little hack to center the game board in the game window.
+		int horizontalOffset = (getWidth() - WIDTH * spriteWidth) / 2; 
+		
+		g2.drawImage(boardItem.getSprite(), horizontalOffset + x * spriteWidth + xOffset, y * spriteHeight + yOffset, null);
+	}
+
 }

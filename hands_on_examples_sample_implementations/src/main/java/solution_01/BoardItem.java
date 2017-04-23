@@ -1,6 +1,6 @@
 package solution_01;
 
-import javafx.scene.image.Image;
+import java.awt.Image;
 
 class BoardItem {
 	
@@ -25,7 +25,7 @@ class BoardItem {
 	}
 	
 	Image getImageFrom(String path) {
-		return new Image(getClass().getClassLoader().getResource(path).toString());
+		return new ImageLoader().loadIcon(path);
 	}
 	
 	GameBoard getGameBoard() {

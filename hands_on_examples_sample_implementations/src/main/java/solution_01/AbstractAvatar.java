@@ -1,7 +1,6 @@
 package solution_01;
 
-import javafx.application.Platform;
-import javafx.scene.image.Image;
+import java.awt.Image;
 
 abstract class AbstractAvatar extends BoardItem implements Runnable {
 	
@@ -37,6 +36,9 @@ abstract class AbstractAvatar extends BoardItem implements Runnable {
 
 	@Override
 	public void run() {
+		// We also make a short nap before any movement so that the board is visible:
+		sleep();
+		
 		move();
 		
 		// At the end of the move we check if we were successful.
@@ -142,16 +144,24 @@ abstract class AbstractAvatar extends BoardItem implements Runnable {
 	}
 	
 	void finishMove() {
+		redraw();
+		sleep();
+	}
+	
+	void sleep() {
+		sleepFor(getSleepTimeInMilliSeconds());
+	}
+	
+	void sleepFor(long milliseconds) {
 		try {
-			Thread.sleep(getSleepTimeInMilliSeconds());
+			Thread.sleep(milliseconds);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		redraw();
 	}
 	
 	void redraw() {
-		Platform.runLater(() -> getGameBoard().redraw());
+		getGameBoard().redraw();
 	}
 	
 	abstract long getSleepTimeInMilliSeconds();
