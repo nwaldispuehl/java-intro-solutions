@@ -3,13 +3,15 @@ package solution_07;
 public class Program {
 	
 	public static void main(String[] args) {
+		
+		String location = "Zurich City, CH";
 	
 		WeatherInformation weatherInformation = new OpenWeatherMapWeatherInformation();
-		double temperature = weatherInformation.getTemperatureFor("Zurich City, CH");
-		System.out.println("Temperature in Zurich: " + temperature);
+		double temperature = weatherInformation.getTemperatureFor(location);
+		System.out.println("Temperature in '" + location + "': " + temperature);
 		
-		int humidity = weatherInformation.getHumidityFor("Zurich City, CH");
-		System.out.println("Humidity in Zurich: " + humidity);
+		int humidity = weatherInformation.getHumidityFor(location);
+		System.out.println("Humidity in '" + location + "': " + humidity);
 	}
 	
 }
