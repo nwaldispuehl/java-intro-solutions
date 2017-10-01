@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.JApplet;
 import javax.swing.JPanel;
@@ -75,6 +76,13 @@ public abstract class MoonBase extends JApplet implements Runnable {
 
     new Thread(this).start();
   }
+  
+  @Override
+	public void repaint() {
+		super.repaint();
+		// Prevents the visual stutter:
+		Toolkit.getDefaultToolkit().sync();
+	}
 
   /**
    * Loads the icon and returns an images which is paintable by the drawImage
