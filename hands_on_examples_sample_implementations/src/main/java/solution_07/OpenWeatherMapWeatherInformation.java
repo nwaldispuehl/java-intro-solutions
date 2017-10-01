@@ -1,6 +1,5 @@
 package solution_07;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -18,7 +17,6 @@ public class OpenWeatherMapWeatherInformation implements WeatherInformation {
 
 	@Override
 	public double getTemperatureFor(String city) {
-		
 		String rawData = getDataFrom(API_URL + encode(city));
 //		System.out.println("Fetched data: " + rawData);
 		
@@ -68,22 +66,11 @@ public class OpenWeatherMapWeatherInformation implements WeatherInformation {
 	/* These are helper functions. */
 	
 	private String getDataFrom(String address) {
-		InputStream inputStream = null;
-		try {
-			URL url = new URL(address);
-			inputStream = url.openStream();
-			return convertStreamToString(inputStream);
-		} catch (Exception e) {
+		try (InputStream inputStream = new URL(address).openStream()) {
+			return convertStreamToString(inputStream);	
+		} 
+		catch (Exception e) {
 			e.printStackTrace();
-		}
-		finally {
-			if (inputStream != null) {
-				try {
-					inputStream.close();
-				} catch (IOException e) {
-					// do nothing
-				}
-			}
 		}
 		
 		return null;
