@@ -60,17 +60,24 @@ abstract class AbstractAvatar extends BoardItem implements Runnable {
 	}
 
 	boolean isObstacleRight() {
-		boolean result = isObstacleInDirection(direction + 1 % directions.length);
+		boolean result = isObstacleInDirection(modulus(direction + 1, directions.length));
 		log("Is obstacle right: " + result);
 		return result;
 	}
 
 	boolean isObstacleLeft() {
-		boolean result = isObstacleInDirection(direction - 1 % directions.length);
+		boolean result = isObstacleInDirection(modulus(direction - 1, directions.length));
 		log("Is obstacle left: " + result);
 		return result;
 	}
 	
+	/**
+	 * Since '%' only provides the remainder, and not the modulus, we got to deal with negative results.
+	 */
+	private int modulus(int i, int n) {
+		return ((i % n) + n) % n;
+	}
+
 	boolean isObstacleInDirection(int direction) {
 		switch (directions[direction]) {
 		case TOP:
