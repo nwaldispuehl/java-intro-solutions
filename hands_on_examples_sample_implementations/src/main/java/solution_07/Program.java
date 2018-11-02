@@ -4,7 +4,7 @@ public class Program {
 	
 	public static void main(String[] args) {
 		
-		String location = "Zurich City, CH";
+		String location = "Zurich, CH";
 	
 		WeatherInformation weatherInformation = new OpenWeatherMapWeatherInformation();
 		double temperature = weatherInformation.getTemperatureFor(location);
