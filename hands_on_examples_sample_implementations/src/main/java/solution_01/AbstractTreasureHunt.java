@@ -3,16 +3,15 @@ package solution_01;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-import javax.swing.JApplet;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-abstract class AbstractTreasureHunt extends JApplet {
+abstract class AbstractTreasureHunt extends JFrame {
 
 	//---- Fields
 
@@ -36,9 +35,16 @@ abstract class AbstractTreasureHunt extends JApplet {
 
 	//---- Methods
 
-	@Override
-	public void init() {
-		super.init();
+	protected static void start() {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new TreasureHunt().init();
+            }
+        });		
+	}
+	
+	protected void init() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		background = new JPanel() {
 			private static final long serialVersionUID = 1L;
@@ -55,11 +61,11 @@ abstract class AbstractTreasureHunt extends JApplet {
 
 		add(background);
 		setSize(840, 840);
+		setMenuBar(null);
+		setTitle("Treasure Hunt");
 
-		Frame window = (Frame) this.getParent().getParent();
-		window.setMenuBar(null);
-		window.setTitle("Treasure Hunt");
-
+		setVisible(true);
+		
 		placeGameBoardItems();
 		startMovement();
 	}

@@ -25,7 +25,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.JApplet;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import solution_08.gameboard.FactionMember;
@@ -38,7 +38,7 @@ import solution_08.utils.ImageLoader;
 /**
  * Abstract base class for NotTheDroidsWeAreLookingFor which does all the heavy work.
  */
-public abstract class GameBase extends JApplet {
+public abstract class GameBase extends JFrame {
 
   private static final int FIELD_SIZE = 48;
   
@@ -95,9 +95,16 @@ public abstract class GameBase extends JApplet {
 
   private JPanel background;
 
-  @Override
-  public void init() {
-    super.init();
+  protected static void start() {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+	        public void run() {
+	            new NotTheDroidsWeAreLookingFor().init();
+	        }
+	    });		
+	}
+  
+  protected void init() {
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 
     background = new JPanel() {
       private static final long serialVersionUID = 1L;
@@ -130,7 +137,7 @@ public abstract class GameBase extends JApplet {
     configureGame();
     prepareBackgroundTiles();
     setSize(horizontalFields * FIELD_SIZE, verticalFields * FIELD_SIZE);
-    
+    setVisible(true);
   }
 
 

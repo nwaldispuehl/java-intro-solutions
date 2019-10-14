@@ -9,4 +9,8 @@ package solution_01;
  */
 public class TreasureHunt extends AbstractTreasureHunt {
 	private static final long serialVersionUID = 1L;
+	
+	public static void main(String[] args) {
+		start();
+	}
 }

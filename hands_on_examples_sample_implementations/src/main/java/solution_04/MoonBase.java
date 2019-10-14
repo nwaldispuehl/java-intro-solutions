@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-import javax.swing.JApplet;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import solution_08.utils.ImageLoader;
@@ -14,7 +14,7 @@ import solution_08.utils.ImageLoader;
 /**
  * Abstract base class for ThatsNoMoon which does all the heavy work.
  */
-public abstract class MoonBase extends JApplet implements Runnable {
+public abstract class MoonBase extends JFrame implements Runnable {
 
   private static final long serialVersionUID = 1L;
   private JPanel background;
@@ -25,6 +25,14 @@ public abstract class MoonBase extends JApplet implements Runnable {
 
   protected abstract void drawImageOn(Graphics2D g2);
 
+  protected static void start() {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+	        public void run() {
+	            new ThatsNoMoon().init();
+	        }
+	    });		
+	}
+  
   @Override
   public void run() {
     while (true) {
@@ -38,8 +46,10 @@ public abstract class MoonBase extends JApplet implements Runnable {
    * Does the initial configuration of the program window.
    */
   private void configureWindow() {
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     background.setBackground(Color.BLACK);
     setSize(initialWindowWidth, initialWindowHeight);
+    setVisible(true);
   }
 
   /**
@@ -56,9 +66,7 @@ public abstract class MoonBase extends JApplet implements Runnable {
     }
   }
 
-  @Override
-  public void init() {
-    super.init();
+  protected void init() {
 
     background = new JPanel() {
       private static final long serialVersionUID = 1L;
