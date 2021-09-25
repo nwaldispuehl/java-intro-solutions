@@ -3,7 +3,7 @@ package solution_01;
 /**
  * Small game with the goal to catch the gem by using appropriate method calls.
  * 
- * Run this class as 'Java Applet' to start the game.
+ * Run this class to start the game.
  * 
  * Edit the file {@code Avatar} to control the game character.
  */

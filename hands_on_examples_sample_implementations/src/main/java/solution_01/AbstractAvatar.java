@@ -44,9 +44,11 @@ abstract class AbstractAvatar extends BoardItem implements Runnable {
 		// At the end of the move we check if we were successful.
 		if (gem != null) {
 			getGameBoard().setGameOverWith("You win!");
+			log("Won game.");
 		}
 		else {
 			getGameBoard().setGameOverWith("You failed!");
+			log("Lost game.");
 		}
 		redraw();
 	}
@@ -78,7 +80,7 @@ abstract class AbstractAvatar extends BoardItem implements Runnable {
 		return ((i % n) + n) % n;
 	}
 
-	boolean isObstacleInDirection(int direction) {
+	private boolean isObstacleInDirection(int direction) {
 		switch (directions[direction]) {
 		case TOP:
 			return getGameBoard().isObstacleNorthOf(this);
@@ -103,7 +105,7 @@ abstract class AbstractAvatar extends BoardItem implements Runnable {
 		finishMove();
 	}
 	
-	void moveInDirection() {
+	private void moveInDirection() {
 		switch (directions[direction]) {
 		case TOP:
 			getGameBoard().moveNorth((Avatar) this);
@@ -137,11 +139,11 @@ abstract class AbstractAvatar extends BoardItem implements Runnable {
 		log("Picked up gem");
 	}
 	
-	void log(String message) {
+	private void log(String message) {
 		System.out.println(message);
 	}
 	
-	void updateDirectionBy(int directionDelta) {
+	private void updateDirectionBy(int directionDelta) {
 		direction = Math.floorMod(direction + directionDelta, directions.length);
 	}
 	
@@ -150,16 +152,16 @@ abstract class AbstractAvatar extends BoardItem implements Runnable {
 		return sprites[direction];
 	}
 	
-	void finishMove() {
+	private void finishMove() {
 		redraw();
 		sleep();
 	}
 	
-	void sleep() {
+	private void sleep() {
 		sleepFor(getSleepTimeInMilliSeconds());
 	}
 	
-	void sleepFor(long milliseconds) {
+	private void sleepFor(long milliseconds) {
 		try {
 			Thread.sleep(milliseconds);
 		} catch (InterruptedException e) {
@@ -167,7 +169,7 @@ abstract class AbstractAvatar extends BoardItem implements Runnable {
 		}
 	}
 	
-	void redraw() {
+	private void redraw() {
 		getGameBoard().redraw();
 	}
 	

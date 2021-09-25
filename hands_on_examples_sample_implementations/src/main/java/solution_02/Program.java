@@ -3,8 +3,8 @@ package solution_02;
 public class Program {
 	public static void main(String[] args) {
 		
-		Person ronald = new Person("Ronald", 1999);
-		int ronaldsAge = ronald.getAgeIn(2020);
+		Person ronald = new Person("Ronald", 2000);
+		int ronaldsAge = ronald.getAgeIn(2021);
 		System.out.println("Age: " + ronaldsAge);
 		
 		
