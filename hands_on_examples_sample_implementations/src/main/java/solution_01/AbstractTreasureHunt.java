@@ -15,8 +15,6 @@ abstract class AbstractTreasureHunt extends JFrame {
 
 	//---- Fields
 
-	static final long serialVersionUID = 1L;
-
 	static final int WIDTH = 7;
 	static final int HEIGHT = 7;
 
@@ -47,8 +45,6 @@ abstract class AbstractTreasureHunt extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		background = new JPanel() {
-			private static final long serialVersionUID = 1L;
-
 			@Override
 			public void paint(Graphics g) {
 				super.paint(g);

@@ -16,7 +16,6 @@ import solution_08.utils.ImageLoader;
  */
 public abstract class MoonBase extends JFrame implements Runnable {
 
-  private static final long serialVersionUID = 1L;
   private JPanel background;
   private int initialWindowWidth = 800;
   private int initialWindowHeight = 600;
@@ -69,7 +68,6 @@ public abstract class MoonBase extends JFrame implements Runnable {
   protected void init() {
 
     background = new JPanel() {
-      private static final long serialVersionUID = 1L;
 
       @Override
       public void paint(Graphics g) {

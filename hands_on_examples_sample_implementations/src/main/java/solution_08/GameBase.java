@@ -44,8 +44,6 @@ public abstract class GameBase extends JFrame {
   
   /* Below some configuration stuff. Ignore for now. If you're bold, you can play around with it a bit. */
 
-  private static final long serialVersionUID = 1L;
-
   private GameBoard gameBoard;
   
   private int horizontalFields;
@@ -107,9 +105,6 @@ public abstract class GameBase extends JFrame {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 
     background = new JPanel() {
-      private static final long serialVersionUID = 1L;
-
-
 
       @Override
       public void paint(Graphics g) {

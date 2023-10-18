@@ -18,7 +18,7 @@ public class ImageLoader {
 	public Image loadIcon(String fileName) {
 	  
 		try {
-      return ImageIO.read(getClass().getClassLoader().getResource(fileName));
+      		return ImageIO.read(getClass().getClassLoader().getResource(fileName));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
