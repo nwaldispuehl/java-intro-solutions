@@ -1,5 +1,7 @@
 package solution_07;
 
+import java.util.Optional;
+
 public class Program {
 	
 	public static void main(String[] args) {
@@ -13,11 +15,15 @@ public class Program {
 		}
 	
 		WeatherInformation weatherInformation = new OpenWeatherMapWeatherInformation();
-		double temperature = weatherInformation.getTemperatureFor(location);
-		System.out.println("Temperature in '" + location + "': " + temperature + " °C");
-		
-		int humidity = weatherInformation.getHumidityFor(location);
-		System.out.println("Humidity in '" + location + "': " + humidity + " %");
+		Optional<WeatherData> weatherData = weatherInformation.getTemperatureFor(location);
+		if (weatherData.isPresent()) {
+			System.out.println("Temperature in '" + location + "': " + weatherData.get().getTemperature() + " °C");
+			System.out.println("Humidity in '" + location + "': " + weatherData.get().getHumidity() + " %");
+		}
+		else {
+			System.out.println("Place not found");
+		}
+
 	}
 	
 }
